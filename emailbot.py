@@ -1,6 +1,7 @@
 import smtplib #simple mail transfer protocol library
 import speech_recognition as sr #speech recognizer
 import pyttsx3 #Text to speech
+from email.message import EmailMessage
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -26,12 +27,20 @@ def  send_mail(receiver, subject, message):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
     server.login('exampleemail@gmail.com', 'examplepass') #Ensure you have your mail in an environment variable for security reason
-    server.sendmail(
+    email = EmailMessage()
+    email['From'] = 'exampleemail@gmail.com'
+    email['To'] = receiver
+    email['Subject'] = subject
+    email.set_content(message)
+    server.send_message(email)
+
+    #Test whether you can send the email
+    '''server.sendmail(
         'exampleemail@gmail.com', #From
         'exampleemail2@gmail.com', #To
         'Hello, join the party today' #Body
 
-    )
+    )'''
 
 email_list = {
     'dude': 'dude@gmail.com',
@@ -51,6 +60,12 @@ def get_email_info():
     message = get_info()
 
     send_mail(receiver, subject, message)
+
+    talk(('Hey, Austin, Your email has been sent.')
+    talk('Do you want to send another email?')
+    send_more = get_info()
+    if 'yes' == send_more:
+        get_email_info() #Send another email
 
 
 get_email_info()
