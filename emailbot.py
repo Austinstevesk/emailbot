@@ -3,15 +3,18 @@ import speech_recognition as sr
 
 listener = sr.Recognizer()
 
-try:
-    with sr.Microphone() as source: 
-        print('Listening...')
-        voice = listener.listen(source)
-        info = listener.recognize_google(voice)
-        print(info)
+def get_info():
+    try:
+        with sr.Microphone() as source: 
+            print('Listening...')
+            voice = listener.listen(source)
+            info = listener.recognize_google(voice)
+            print(info)
+            return info
+            
 
-except:
-    pass
+    except:
+        pass
 
 def  send_mail():
     server = smtplib.SMTP('smtp.gmail.com', 587)
