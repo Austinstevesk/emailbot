@@ -22,7 +22,7 @@ def get_info():
     except:
         pass
 
-def  send_mail():
+def  send_mail(receiver, subject, message):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
     server.login('exampleemail@gmail.com', 'examplepass') #Ensure you have your mail in an environment variable for security reason
@@ -33,6 +33,24 @@ def  send_mail():
 
     )
 
+email_list = {
+    'dude': 'dude@gmail.com',
+    'programming': 'programming@gmail.com',
+    'code': 'code@gmail.com',
+
+}
+
 def get_email_info():
     talk('To whom do you want to send the email?')
     name = get_info() #Get input from user
+    receiver = email_list[name]
+    print('Email recepient: ', receiver)
+    talk('What is the subject of your email?')
+    subject = get_info()
+    talk('Tell me the message of your email')
+    message = get_info()
+
+    send_mail(receiver, subject, message)
+
+
+get_email_info()
