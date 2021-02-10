@@ -10,7 +10,7 @@ def talk(text):
     engine.say(text)
     engine.runAndWait()
 
-#Gets infomation required to send email
+#Gets infomation from user
 def get_info():
     try:
         with sr.Microphone() as source: 
