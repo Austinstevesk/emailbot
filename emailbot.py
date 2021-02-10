@@ -23,7 +23,7 @@ def get_info():
 
     except:
         pass
-
+#Prepares to send the mail by setting all necessary parameters
 def  send_mail(receiver, subject, message):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
