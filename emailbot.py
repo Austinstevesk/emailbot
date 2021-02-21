@@ -33,7 +33,7 @@ def  send_mail(receiver, subject, message):
     email['To'] = receiver
     email['Subject'] = subject
     email.set_content(message)
-    server.send_message(email)
+    server.send_message(email)#Finally sends the email
 
     #Test whether you can send the email
     '''server.sendmail(
