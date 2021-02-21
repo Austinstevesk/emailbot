@@ -43,6 +43,7 @@ def  send_mail(receiver, subject, message):
 
     )'''
 
+#You can create your own list as long as it can be
 email_list = {
     'dude': 'dude@gmail.com',
     'programming': 'programming@gmail.com',
