@@ -13,7 +13,7 @@ def talk(text):
 #Gets infomation from user
 def get_info():
     try:
-        with sr.Microphone() as source: 
+        with sr.Microphone() as source: #Using microphone for input
             print('Listening...')
             voice = listener.listen(source)
             info = listener.recognize_google(voice)
