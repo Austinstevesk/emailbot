@@ -63,7 +63,7 @@ def get_email_info():
 
     send_mail(receiver, subject, message)
 
-    talk(('Hey, Austin, Your email has been sent.')
+    talk('Hey, Austin, Your email has been sent.')
     talk('Do you want to send another email?')
     send_more = get_info()
     if 'yes' == send_more:
